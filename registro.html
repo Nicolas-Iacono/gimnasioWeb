@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrarme</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;1,200;1,300;1,400;1,700;1,800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,600;0,900;1,200;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="container header">
+        <div class="logoYNab">
+            <a href="index.html">  
+                <img src="img/logoPc.svg" alt="">
+                <img src="img/logotexto.png" alt="">
+            </a>
+            <nav>
+                <ul>
+                    <li><a class="navList" href="index.html">INICIO</a></li>
+                    <li><a class="navList" href="servicios.html">SERVICIOS</a></li>
+                    <li><a class="navList" href="planes.html">PLANES</a></li>
+                    <li><a class="navList" href="#">CONTACTO</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="reg">
+            <div>
+                <h3 class="iniciarSesion"><a href="iniciarSesion.html">INICIAR SESION</a></h3>
+
+            </div>
+            <div class="reg2">
+                <h3 class="registro"><a href="registro.html">REGISTRO</a></h3>
+
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="contenidoText contenidoForm">
+            <form id="form" action="">
+                <h1>Registro</h1>
+                <div class="nombreYApellido">
+                    <div class="nombre">
+                        <input type="text" placeholder="Nombre" id="nombre">
+                        <p><small class="error" id="nombreError">Falta completar campo</small></p>
+                    </div>
+
+                    <div class="apellido">
+                        <input type="text" placeholder="Apellido" id="apellido">
+                        <p><small class="error" id="apellidoError">Falta completar campo</small></p>    
+                    </div>
+                </div>
+                <div class="pesoYMedidas">
+                    <input type="number" placeholder="Altura /cm" id="altura" class="medida">
+
+                    <input type="number" placeholder="Peso /Kg" id="peso" class="medida">
+                    <ul class="errorPesoMedida">
+                        <li><p><small class="error" id="pesoError">falta peso</small></p></li>
+                        <li><p><small class="error" id="alturaError">falta altura</small></p></li>
+
+                    </ul>
+                </div>
+
+                <div class="email">
+                    <input type="email" name="email" id="email" placeholder="Email">
+                    <p><small class="error" id="emailError">Falta completar campo</small></p>    
+                </div>
+                <div class="password">
+                    <input type="password" placeholder="contraseña" id="password">
+                    <p><small class="error" id="passwordError">Falta completar campo</small></p> 
+                </div>
+                <input type="submit" value="REGISTRARME" class="submit" >
+            </form>
+            <div class="textoPromo">
+                    <p class="parrafo">Registrate y <br> tené acceso <br>al diario de <br> progreso <br><br><span class="promoSpan">100% FREE</span></p>
+            </div>
+        </div>
+        <div class="contenidoImg">
+            <img class="imagenPoster"  src="img/foto_inicio_web 1.svg" alt="">
+        </div>
+
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
