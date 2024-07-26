@@ -16,10 +16,9 @@ import { ButtonVideo } from "./ButtonVideo";
 import HeaderForm from "./HeaderForm";
 import { postFetch } from "../api/useFetch";
 import "../styles/form.css"
-const apiUrl = import.meta.env.VITE_API_URL;
+const API_URL = import.meta.env.VITE_API_URL || 'https://movimiento-consiente.onrender.com';
 
-
-const urlUser = `${apiUrl}/user`
+const urlUser = `${API_URL}/user`
 
 const validationSchema = Yup.object({
   nombre: Yup.string()
