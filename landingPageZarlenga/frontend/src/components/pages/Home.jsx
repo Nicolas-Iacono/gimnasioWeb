@@ -1,5 +1,5 @@
-import { Box, Grid, Paper, Typography } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import { Box, Grid, Paper, Typography,Modal } from "@mui/material";
+import React, { useState } from "react";
 import {
   ParrafoSub,
   TextContainer,
@@ -11,149 +11,170 @@ import {
 } from "../common/Textos";
 import { FormContainer } from "../common/Form";
 import { ButtonVideo } from "../common/ButtonVideo";
-import {fetchMessages} from "../../../../backend/mensajesService"
+import { fetchMessages } from "../../../../backend/mensajesService";
 import PanToolAltIcon from '@mui/icons-material/PanToolAlt';
 import Footer from "../layout/Footer";
+import GrillaFotos from "../common/GrillaFotos";
+import video from "../../assets/2704034645737880340.mp4"
+import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+
 const Home = () => {
   const [mensajes, setMensajes] = useState([]);
-  const [form, setForm] = useState(false)
+  const [form, setForm] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [vid, setVid] = useState(null);
 
+  const handleOpen = () => {
+    setVid(video);
+    setOpen(true);
+  };
 
-    const formHandleClick = () => {
-      setForm(!form)
-  
-    }
-    
-
-  
-
-  const handleClick = async () => {
-    try {
-      const messages = await fetchMessages("http://localhost:4000/messages");
-
-      if (messages.length > 0) {
-        setMensajes(messages)
-        
-      } else {
-        setMensajes([{
-          nombre: 'No hay mensajes',
-          content: 'No se encontraron mensajes.'
-        }]);
-      }
-    } catch (e) {
-      console.error("Error fetching messages: ", e);
-      setMensajes([{
-        nombre: 'Error',
-        content: 'No se pudo obtener el mensaje'
-      }]);
-    }
+  const handleClose = () => {
+    setOpen(false);
+    setVid(null);
   };
 
 
+  const formHandleClick = () => {
+    setForm(!form);
+  };
+
 
   return (
-   <>
-
-      {form ? 
-
-
-        (
+    <>
+      {form ? (
         <Box
-        sx={{
-          position:'fixed',
-          left: 0,
-          width: "100%",
-          height: "100vh",
-          backgroundColor: "rgba(0, 0, 0, 0.8)", // Semi-transparente
-          zIndex: 2, // Debajo del formulario
-          overflow: 'auto', 
-        }}>
-
-        <Paper sx={{backgroundColor:"black",padding:"1rem", width:"90%", margin:"0 auto", borderRadius:"10px", marginTop:"4rem"}}>
-          <FormContainer  onClose={formHandleClick}/>
-        </Paper>
+          sx={{
+            position: 'fixed',
+            left: 0,
+            width: "100%",
+            height: "100vh",
+            backgroundColor: "rgba(0, 0, 0, 0.8)",
+            zIndex: 2,
+            overflow: 'auto',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <Paper
+          elevation={24}
+            sx={{
+              backgroundColor: "black",
+              padding: "1rem",
+              width: "90%",
+              borderRadius: "10px",
+              animation: 'zoomIn 0.5s ease-in-out',
+            }}
+          >
+            <FormContainer onClose={formHandleClick} />
+          </Paper>
         </Box>
-        
-      
-      ) : 
-        
-        ( <Grid
+      ) : (
+        <Grid
           container
           sx={{
             display: "flex",
             flexDirection: "column",
             backgroundColor: "black",
             width: "100%",
-            height:"190vh"
+            height: "240vh"
           }}
         >
-        <TextContainer sx={{ flexDirection: "column", gap: "1rem" }}>
-        <Parrafo900 variant="h1" sx={{ color: "" }}>
-          TEAM ENFOCADOS <br />Leandro Zarlenga
-        </Parrafo900>
-        <Parrafo900 variant="p" sx={{textTransform:"uppercase"}}>
-          ¿Estas intencionando un cambio <span style={{ backgroundColor: "#D0FE19", color: "black", padding: "0 1px" }}>fisico-mental</span>  y no sabes como lograrlo o te sentis desmotivado?
-        </Parrafo900>
-      </TextContainer>
+          <TextContainer sx={{ flexDirection: "column", gap: "1rem" }}>
+            <Parrafo900 variant="h1" sx={{ color: "" }}>
+              TEAM ENFOCADOS <br />Leandro Zarlenga
+            </Parrafo900>
+            <Parrafo900 variant="p" sx={{ textTransform: "uppercase" }}>
+              ¿Estas intencionando un cambio <span style={{ backgroundColor: "#D0FE19", color: "black", padding: "0 1px" }}>fisico-mental</span>  y no sabes como lograrlo o te sentis desmotivado?
+            </Parrafo900>
+          </TextContainer>
 
-      <TextContainer>
-        <Parrafo600>
-          TE BRINDAMOS EL METODO MOVIMIENTO CONSCIENTE
+          <TextContainer>
+            <Parrafo600>
+              TE BRINDAMOS EL METODO MOVIMIENTO CONSCIENTE
+            </Parrafo600>
+          </TextContainer>
 
-        </Parrafo600>
-      </TextContainer>
+          <TextContainer>
+            <ParrafoSub>
+              Descubrí como podés transformar <br />
+              tu fisico sin pasar hambre o entrenar Miles de horas
+            </ParrafoSub>
+          </TextContainer>
 
-      <TextContainer>
-        <ParrafoSub>
-        Descubrí como podés transformar <br />
-          tu fisico sin pasar hambre o entrenar Miles de horas
-        </ParrafoSub>
-      </TextContainer>
+          <ContainerImg />
 
-      <ContainerImg />
+          <TextContainer>
+            <Parrafo400>
+              <span style={{ fontWeight: "600px" }}>La mejor parte:</span> aplica para vos incluso si no tuviste buenos
+              resultados en el pasado o si nunca entrenaste
+            </Parrafo400>
+          </TextContainer>
 
-      <TextContainer>
-        <Parrafo400>
-          <span style={{ fontWeight: "600px" }}>La mejor parte:</span> aplica para vos incluso si no tuviste buenos
-          resultados en el pasado o si nunca entrenaste
-        </Parrafo400>
-      </TextContainer>
+          <ContainerBtn>
+            <ButtonVideo onClick={() => handleOpen(video)}>
+              Ver video
+            </ButtonVideo>
+            <Modal
+        open={open}
+        onClose={handleClose}
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
 
-      <ContainerBtn>
-        <ButtonVideo onClick={handleClick}>
-          Ver video
-        </ButtonVideo>
-        
-        <Typography sx={{ color: "white", fontSize: "17px" }}>
-          (Programa disponible por tiempo limitado)
-        </Typography>
-      </ContainerBtn>
+        <Box
+          sx={{
+            width: '100%',
+            height: '100%',
+            outline: 'none',
+            top:"11rem",
+            position:"relative"
+            
+          }}
+        >
      
-   
-      <TextContainer sx={{flexDirection:"column"}}>
-      <ButtonVideo onClick={formHandleClick}>
-        QUIERO SER PARTE
-      </ButtonVideo> 
-        <PanToolAltIcon color="white" sx={{color:"white", fontSize:"large"}}/>
-        <Parrafo900 sx={{fontStyle:"italic"}}>
-          Completa el formulario para conocer tu indice de masa corporal
-        </Parrafo900>
-      </TextContainer>
-      <TextContainer sx={{flexDirection:"column"}}>
-   
-      <Footer/>
-      <Box>
-      <Typography sx={{color:"white", textAlign:"center"}}>
-        Movimiento Con.Siente || Todos los derechos reservados © 2024 
-      </Typography>
-      </Box>
-    
-      </TextContainer>
-      </Grid>
 
+          <iframe
+          width="100%"
+          height="50%"
+          src={video}
+          title="Descubri nuestro equipo"
+          frameBorder="0"
+          allowFullScreen
+          />
+        </Box>
+      </Modal>
+            <Typography sx={{ color: "white", fontSize: "17px" }}>
+              (Programa disponible por tiempo limitado)
+            </Typography>
+          </ContainerBtn>
+
+          <GrillaFotos />
+
+          <TextContainer sx={{ flexDirection: "column" }}>
+            <ButtonVideo onClick={formHandleClick}>
+              QUIERO SER PARTE
+            </ButtonVideo>
+            <PanToolAltIcon color="white" sx={{ color: "white", fontSize: "large" }} />
+            <Parrafo900 sx={{ fontStyle: "italic" }}>
+              Completa el formulario para conocer tu indice de masa corporal
+            </Parrafo900>
+          </TextContainer>
+          <TextContainer sx={{ flexDirection: "column" }}>
+            <Footer />
+            <Box>
+              <Typography sx={{ color: "white", textAlign: "center" }}>
+                Movimiento Con.Siente || Todos los derechos reservados © 2024
+              </Typography>
+            </Box>
+          </TextContainer>
+        </Grid>
       )}
-   </>
-      
+    </>
   );
 };
 

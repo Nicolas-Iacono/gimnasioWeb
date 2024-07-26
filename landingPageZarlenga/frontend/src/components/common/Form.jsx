@@ -13,7 +13,6 @@ import {
   IconButton,
 } from "@mui/material";
 import { ButtonVideo } from "./ButtonVideo";
-import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import HeaderForm from "./HeaderForm";
 import { postFetch } from "../api/useFetch";
 import "../styles/form.css"
