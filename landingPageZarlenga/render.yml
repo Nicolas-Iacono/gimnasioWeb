@@ -5,7 +5,7 @@ services:
     plan: free
     buildCommand: npm install
      startCommand: npm install concurrently && npm start
-    rootDir: .
+    rootDir: landingPageZarlenga
     envVars:
       - key: HOST
         value: localhost
