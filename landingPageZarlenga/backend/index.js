@@ -14,7 +14,7 @@ console.log("Escuchando en puerto " + app.get("port"));
 // Middleware
 app.use(morgan("dev"));
 app.use(cors({
-  origin: ["http://localhost:5173", "http://localhost:3000"]
+  origin: ["http://localhost:5173", "http://localhost:3000","https://movimiento-consiente.onrender.com"]
 }));
 app.use(express.json()); 
 // Rutas

@@ -16,10 +16,10 @@ import { ButtonVideo } from "./ButtonVideo";
 import HeaderForm from "./HeaderForm";
 import { postFetch } from "../api/useFetch";
 import "../styles/form.css"
+const apiUrl = import.meta.env.VITE_API_URL;
 
 
-
-const urlUser = "http://localhost:4000/user"
+const urlUser = `${apiUrl}/user`
 
 const validationSchema = Yup.object({
   nombre: Yup.string()
