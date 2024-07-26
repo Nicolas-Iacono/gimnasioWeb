@@ -3,8 +3,8 @@ services:
     name: backend
     env: node
     plan: free
-    buildCommand: npm install
-     startCommand: npm install concurrently && npm start
+    buildCommand: cd backend && npm install
+    startCommand: cd backend &&  npm start
     rootDir: landingPageZarlenga
     envVars:
       - key: HOST
@@ -17,3 +17,10 @@ services:
         value: root
       - key: PASSWORD
         value: lindura010
+
+    - type: web
+      name: frontend
+      env: node
+      buildCommand: cd frontend && npm install && npm run build
+      startCommand: cd frontend && npm run preview
+      staticPublishPath: frontend/dist
