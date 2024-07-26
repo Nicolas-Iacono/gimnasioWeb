@@ -7,7 +7,7 @@ const sendMail = require('./mailer')
 
 // Configuración inicial
 const app = express();
-app.set("port", 4000);
+app.set("port", process.env.PORT || 4000);
 app.listen(app.get("port"));
 console.log("Escuchando en puerto " + app.get("port"));
 
@@ -18,6 +18,11 @@ app.use(cors({
 }));
 app.use(express.json()); 
 // Rutas
+
+app.get('/', (req, res) => {
+  res.send('El servidor está funcionando');
+});
+
 app.get('/messages', async (req, res) => {
   let connection;
   try {
