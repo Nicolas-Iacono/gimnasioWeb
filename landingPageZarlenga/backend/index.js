@@ -3,7 +3,7 @@ const morgan = require("morgan");
 const database = require("./database");
 const cors = require("cors");
 const sendMail = require('./mailer')
-
+const path = require('path');
 
 // Configuración inicial
 const app = express();
