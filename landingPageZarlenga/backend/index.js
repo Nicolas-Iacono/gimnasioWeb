@@ -19,9 +19,8 @@ app.use(cors({
 app.use(express.json()); 
 // Rutas
 
-app.get('/', (req, res) => {
-  res.send('El servidor está funcionando');
-});
+const frontendPath = path.join(__dirname, '..', 'frontend', 'dist');
+app.use(express.static(frontendPath));
 
 app.get('/messages', async (req, res) => {
   let connection;
@@ -85,4 +84,8 @@ sendMail(
   } finally {
     if (connection) connection.release();
   }
+});
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(frontendPath, 'index.html'));
 });
