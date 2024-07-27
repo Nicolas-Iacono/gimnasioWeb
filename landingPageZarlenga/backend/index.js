@@ -4,7 +4,7 @@ const database = require("./database");
 const cors = require("cors");
 const sendMail = require('./mailer')
 const path = require('path');
-
+const { Sequelize } = require('sequelize');
 // Configuración inicial
 const app = express();
 app.set("port", process.env.PORT || 4000);
@@ -89,3 +89,19 @@ sendMail(
 app.get('*', (req, res) => {
   res.sendFile(path.join(frontendPath, 'index.html'));
 });
+
+const sequelize = new Sequelize('database', 'username', 'password', {
+  host: 'localhost',
+  dialect: 'mysql' // o el dialecto que estés usando
+});
+
+async function testConnection() {
+  try {
+    await sequelize.authenticate();
+    console.log('Conexión a la base de datos ha sido establecida exitosamente.');
+  } catch (error) {
+    console.error('No se pudo conectar a la base de datos:', error);
+  }
+}
+
+testConnection();
