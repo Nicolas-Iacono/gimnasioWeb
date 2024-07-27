@@ -4,7 +4,7 @@ const database = require("./database");
 const cors = require("cors");
 const sendMail = require('./mailer')
 const path = require('path');
-const { Sequelize } = require('sequelize');
+const Sequelize  = require('sequelize');
 // Configuración inicial
 const app = express();
 app.set("port", process.env.PORT || 4000);
