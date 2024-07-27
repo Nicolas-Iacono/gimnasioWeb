@@ -3,11 +3,11 @@ const morgan = require("morgan");
 const database = require("./database");
 const cors = require("cors");
 const sendMail = require('./mailer')
-
-
+const path = require('path');
+const Sequelize  = require('sequelize');
 // Configuración inicial
 const app = express();
-app.set("port", 4000);
+app.set("port", process.env.PORT || 4000);
 app.listen(app.get("port"));
 console.log("Escuchando en puerto " + app.get("port"));
 
@@ -18,6 +18,10 @@ app.use(cors({
 }));
 app.use(express.json()); 
 // Rutas
+
+const frontendPath = path.join(__dirname, '..', 'frontend', 'dist');
+app.use(express.static(frontendPath));
+
 app.get('/messages', async (req, res) => {
   let connection;
   try {
@@ -81,3 +85,23 @@ sendMail(
     if (connection) connection.release();
   }
 });
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(frontendPath, 'index.html'));
+});
+
+const sequelize = new Sequelize('database', 'username', 'password', {
+  host: 'localhost',
+  dialect: 'mysql' // o el dialecto que estés usando
+});
+
+async function testConnection() {
+  try {
+    await sequelize.authenticate();
+    console.log('Conexión a la base de datos ha sido establecida exitosamente.');
+  } catch (error) {
+    console.error('No se pudo conectar a la base de datos:', error);
+  }
+}
+
+testConnection();
