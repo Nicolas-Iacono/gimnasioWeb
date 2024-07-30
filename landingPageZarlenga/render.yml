@@ -26,3 +26,12 @@ services:
     buildCommand: npm install --prefix frontend && npm run build --prefix frontend
     startCommand: npm run preview
     staticPublishPath: dist
+
+  - type: postgres
+    name: my-postgres-db
+    plan: free
+    env: postgres
+    region: ohio
+    database: dbmconsiente
+    username: dbmconsiente_user
+    password: IoDBzEDG27vbaT0eOuPI8ykqBFtkLF4H
