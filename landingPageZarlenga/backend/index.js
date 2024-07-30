@@ -14,7 +14,7 @@ console.log("Escuchando en puerto " + app.get("port"));
 // Middleware
 app.use(morgan("dev"));
 app.use(cors({
-  origin: ["http://localhost:5173", "http://localhost:3000","https://movimiento-consiente.onrender.com"]
+  origin: ["http://localhost:5173", "http://localhost:3000", "https://movimiento-consiente.onrender.com"]
 }));
 app.use(express.json()); 
 // Rutas
@@ -90,7 +90,7 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(frontendPath, 'index.html'));
 });
 
-const sequelize = new Sequelize('database', 'username', 'password', {
+const sequelize = new Sequelize(process.env.database, process.env.user, process.env.password, {
   host: 'localhost',
   dialect: 'mysql' // o el dialecto que estés usando
 });
