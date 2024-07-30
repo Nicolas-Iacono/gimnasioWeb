@@ -8,7 +8,7 @@ services:
     startCommand: npm start
     envVars:
       - key: HOST
-        value: localhost
+        value: 0.0.0.0
       - key: PORT
         value: 4000
       - key: DATABASE
@@ -16,7 +16,7 @@ services:
       - key: USER
         value: root
       - key: PASSWORD
-        value: lindura010
+        value: root
 
   - type: web
     name: frontend
