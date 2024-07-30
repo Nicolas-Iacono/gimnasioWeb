@@ -6,7 +6,15 @@ dotenv.config();
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  server:{
-    port:3000,
-},
-})
+  server: {
+    proxy: {
+      '/api': process.env.VITE_API_URL
+    }
+  },
+  build: {
+    outDir: 'dist', // Directorio de salida para la construcción
+    rollupOptions: {
+      input: 'index.html' // Asegúrate de que el archivo index.html esté en esta ubicación
+    }
+  }
+});

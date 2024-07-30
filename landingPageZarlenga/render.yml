@@ -9,6 +9,8 @@ services:
     envVars:
       - key: HOST
         value: 0.0.0.0
+      - key: PORT
+        value: 4000
       - key: DATABASE
         value: app_mc
       - key: USER

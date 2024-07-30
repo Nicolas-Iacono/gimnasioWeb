@@ -14,7 +14,9 @@ console.log("Escuchando en puerto " + app.get("port"));
 // Middleware
 app.use(morgan("dev"));
 app.use(cors({
-  origin: ["http://localhost:5173", "http://localhost:3000", "https://movimiento-consiente.onrender.com"]
+  origin: 'https://movimiento-consiente.onrender.com/', // Reemplaza con la URL de tu frontend si está en producción
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos permitidos
+  allowedHeaders: ['Content-Type', 'Authorization'], // Encabezados permitidos
 }));
 app.use(express.json()); 
 // Rutas
