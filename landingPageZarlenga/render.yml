@@ -7,10 +7,6 @@ services:
     buildCommand: npm install
     startCommand: npm start
     envVars:
-      - key: HOST
-        value: localhost
-      - key: PORT
-        value: 4000
       - key: DATABASE
         value: app_mc
       - key: USER
