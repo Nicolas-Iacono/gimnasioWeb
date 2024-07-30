@@ -4,8 +4,8 @@
   "main": "index.js",
   "scripts": {
     "start:backend": "npm run start --prefix backend",
-    "start:frontend": "npm run dev --prefix frontend",
-    "start": "npm run start:backend && npm run start:frontend",
+    "start:frontend": "npm install --prefix frontend && npm run build --prefix frontend",
+    "start": "npm run start:frontend && npm run start:backend",
     "build:frontend": "npm install --prefix frontend && npm run build --prefix frontend",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
