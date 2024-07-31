@@ -13,12 +13,26 @@ console.log("Escuchando en puerto " + app.get("port"));
 
 // Middleware
 app.use(morgan("dev"));
+const allowedOrigins = [
+  'https://movimiento-consiente.onrender.com',
+  'http://localhost:3000'
+];
+
 app.use(cors({
-  origin: 'https://movimiento-consiente.onrender.com/', // Reemplaza con la URL de tu frontend si está en producción
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos permitidos
-  allowedHeaders: ['Content-Type', 'Authorization'], // Encabezados permitidos
+  origin: (origin, callback) => {
+    // Permitir solicitudes sin origin, como las que vienen de herramientas de desarrollo
+    if (!origin || allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+    // Si la URL no está en la lista, rechazar la solicitud
+    return callback(new Error('Not allowed by CORS'));
+  },
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 app.use(express.json()); 
+
+
 // Rutas
 
 const frontendPath = path.join(__dirname, '..', 'frontend', 'dist');
@@ -41,22 +55,22 @@ app.get('/messages', async (req, res) => {
 });
 
 
-app.post('/user', async (req, res) => {
+app.post('/api/user', async (req, res) => {
   let connection;
   try {
     connection = await database.getConnection();
 
     // Obtener los datos del cuerpo de la solicitud
-    const { nombre, apellido, edad, peso, altura, email } = req.body;
+    const { username, lastname, age, weight, height, email } = req.body;
 
     // Consulta SQL para insertar un nuevo usuario
     const [result] = await connection.query(
-      'INSERT INTO users (nombre, apellido, edad, peso, altura, email) VALUES (?, ?, ?, ?, ?, ?)',
-      [nombre, apellido, edad, peso, altura, email]
+      'INSERT INTO users (username, lastname, age, weight, height, email) VALUES (?, ?, ?, ?, ?, ?)',
+      [username,lastname,age, weight, height, email]
     );
 
     // Enviar una respuesta de éxito
-    res.status(201).json({ message: 'Usuario creado con  ', userId: result.insertId,nombre: nombre ,edad: edad, altura: altura, peso: peso, email: email });
+    res.status(201).json({ message: 'Usuario creado con  ', userId: result.insertId,username: username, lastname: lastname, age: age, height: height, weight: weight, email: email });
 
   // Contenido del correo con estilos HTML
   const htmlContent = `
@@ -64,11 +78,11 @@ app.post('/user', async (req, res) => {
     <h2 style="color: #4CAF50;">Nuevo usuario agregado</h2>
     <p>Se ha agregado un nuevo usuario con los siguientes detalles:</p>
     <ul>
-      <li><strong>Nombre:</strong> ${nombre}</li>
-      <li><strong>Apellido:</strong> ${apellido}</li>
-      <li><strong>Edad:</strong> ${edad}</li>
-      <li><strong>Peso:</strong> ${peso} kg</li>
-      <li><strong>Altura:</strong> ${altura} cm</li>
+      <li><strong>Nombre:</strong> ${username}</li>
+      <li><strong>Apellido:</strong> ${lastname}</li>
+      <li><strong>Edad:</strong> ${age}</li>
+      <li><strong>Peso:</strong> ${weight} kg</li>
+      <li><strong>Altura:</strong> ${height} cm</li>
       <li><strong>Email:</strong> ${email}</li>
     </ul>
   </div>
