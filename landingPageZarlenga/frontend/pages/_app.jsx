@@ -1,6 +1,7 @@
 import Layout from "../components/Layout";
 import "../styles/form.css";
 import "../styles/globalStyles.css"
+import PropTypes from 'prop-types'
 export function MyApp({ Component, pageProps }) {
   return (
     <Layout>

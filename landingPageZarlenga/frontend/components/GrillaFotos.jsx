@@ -38,7 +38,7 @@ const GrillaFotos = () => {
                   filter: 'grayscale(100%)',
                 },
               }}
-              onClick={() => handleOpen(foto)}
+              onClick={() => handleOpen(foto.src)}
             >
             </Box>
           </Grid>
