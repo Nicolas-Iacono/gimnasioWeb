@@ -1,6 +1,6 @@
-import { Grid, Box, Modal } from '@mui/material';
-import React, { useState } from 'react';
-import azul from "../public/images/remereaAzul.jpg"
+import { Grid, Box, Modal } from "@mui/material";
+import React, { useState } from "react";
+import azul from "../public/images/remereaAzul.jpg";
 import blanca from "../public/images/remeraBlanca.jpg";
 import abs from "../public/images/abs.jpg";
 import fitnes from "../public/images/posicionEspejo.jpg";
@@ -23,24 +23,42 @@ const GrillaFotos = () => {
 
   return (
     <>
-      <Grid container sx={{ margin: "4rem auto", display: "flex", width: "100%", height: "18rem" }}>
+      <Grid
+        container
+        sx={{
+          margin: "4rem auto",
+          display: "flex",
+          width: "100%",
+          height: "18rem",
+        }}
+      >
         {fotos.map((foto, index) => (
-          <Grid item key={index} sx={{ display: "flex", justifyContent: "center", gap: "10px", width: "45%", height: "40%", margin: "0 auto" }}>
+          <Grid
+            item
+            key={index}
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              gap: "10px",
+              width: "45%",
+              height: "40%",
+              margin: "0 auto",
+            }}
+          >
             <Box
               sx={{
                 width: "100%",
                 backgroundImage: `url(${foto.src})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center center',
+                backgroundSize: "cover",
+                backgroundPosition: "center center",
                 backgroundRepeat: "no-repeat",
                 transition: "filter 0.6s ease",
-                '&:hover': {
-                  filter: 'grayscale(100%)',
+                "&:hover": {
+                  filter: "grayscale(100%)",
                 },
               }}
               onClick={() => handleOpen(foto.src)}
-            >
-            </Box>
+            ></Box>
           </Grid>
         ))}
       </Grid>
@@ -49,20 +67,20 @@ const GrillaFotos = () => {
         open={open}
         onClose={handleClose}
         sx={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
         }}
       >
         <Box
           sx={{
-            width: '80%',
-            height: '80%',
+            width: "80%",
+            height: "80%",
             backgroundImage: `url(${selectedImage})`,
-            backgroundSize: 'contain',
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center',
-            outline: 'none',
+            backgroundSize: "contain",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            outline: "none",
           }}
         />
       </Modal>

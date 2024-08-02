@@ -1,23 +1,19 @@
 import React from "react";
 import { useFormik } from "formik";
-import { Form} from "formik";
+import { Form } from "formik";
 import * as Yup from "yup";
 import Swal from "sweetalert2";
-import {
-  Grid,
-  Button,
-  Container,
-  TextField,
-} from "@mui/material";
+import { Grid, Button, Container, TextField } from "@mui/material";
 import HeaderForm from "./HeaderForm";
 import { postFetch } from "../hooks/useFetch";
-import PropTypes from 'prop-types';
-const API_URL = process.env.NODE_ENV === 'production'
-? process.env.NEXT_PUBLIC_API_URL_PRODUCTION
-: process.env.NEXT_PUBLIC_API_URL_DESARROLLO;
+import PropTypes from "prop-types";
+const API_URL =
+  process.env.NODE_ENV === "production"
+    ? process.env.NEXT_PUBLIC_API_URL_PRODUCTION ||
+      "https://movimiento-consiente.onrender.com"
+    : process.env.NEXT_PUBLIC_API_URL_DESARROLLO || "http://localhost:4000";
 
 const urlUser = `${API_URL}`;
-
 
 export const FormContainer = ({ onClose }) => {
   const formik = useFormik({
@@ -186,4 +182,3 @@ Form.propTypes = {
   // Puedes agregar más validaciones de props según sea necesario
 };
 export default Form;
-

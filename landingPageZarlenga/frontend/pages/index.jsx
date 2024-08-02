@@ -104,7 +104,7 @@ const Home = () => {
           <TextContainer>
             <ParrafoSub>
               Descubrí como podés transformar <br />
-              tu fisico sin pasar hambre o entrenar Miles de horas
+              tu fisico sin pasar hambre o entrenar Miles de horas
             </ParrafoSub>
           </TextContainer>
 
@@ -119,9 +119,7 @@ const Home = () => {
           </TextContainer>
 
           <ContainerBtn>
-            <ButtonVideo onClick={() => handleOpen(vid)}>
-              Ver video
-            </ButtonVideo>
+            <ButtonVideo onClick={() => handleOpen(vid)}>Ver video</ButtonVideo>
             <Modal
               open={open}
               onClose={handleClose}

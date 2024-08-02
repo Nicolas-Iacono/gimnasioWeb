@@ -1,6 +1,6 @@
-import { Box, Typography, keyframes } from '@mui/material'
-import React, { useState, useRef} from 'react'
-import logo from '../public/assets/whatsAppLogo.png'
+import { Box, Typography, keyframes } from "@mui/material";
+import React, { useState, useRef } from "react";
+import logo from "../public/assets/whatsAppLogo.png";
 
 // Define keyframes for the slide-in animation
 const slideIn = keyframes`
@@ -15,24 +15,22 @@ const slideIn = keyframes`
     opacity: 1;
     transform: translateX(0);
   }
-`
+`;
 
 export const WhatsAppContact = () => {
-  const phoneNumber = '+541144952863'
-  const whatsappUrl = `https://wa.me/${phoneNumber}`
-  const [hover, setHover] = useState(false)
-  const elementRef = useRef(null)
+  const phoneNumber = "+541144952863";
+  const whatsappUrl = `https://wa.me/${phoneNumber}`;
+  const [hover, setHover] = useState(false);
+  const elementRef = useRef(null);
 
   const handleMouseEnter = () => {
-    setHover(true)
-    const width = elementRef.current.getBoundingClientRect().width
-  }
-
+    setHover(true);
+    const width = elementRef.current.getBoundingClientRect().width;
+  };
 
   const handleMouseLeave = () => {
-    setHover(false)
-  }
-
+    setHover(false);
+  };
 
   return (
     <Box
@@ -40,20 +38,20 @@ export const WhatsAppContact = () => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       sx={{
-        position: 'fixed',
+        position: "fixed",
         bottom: 16,
         right: 16,
-        width: hover ? '170px' : '70px',
-        height: '70px',
-        borderRadius: '70px 70px 70px 20px',
+        width: hover ? "170px" : "70px",
+        height: "70px",
+        borderRadius: "70px 70px 70px 20px",
         boxShadow: 3,
         p: 1,
-        justifyContent: 'center',
+        justifyContent: "center",
         zIndex: 1000,
-        display: 'flex',
-        alignItems: 'center',
-        transition: 'width ease-in-out 0.3s',
-        backgroundColor: hover ? '#00e676' : '#00c853'
+        display: "flex",
+        alignItems: "center",
+        transition: "width ease-in-out 0.3s",
+        backgroundColor: hover ? "#00e676" : "#00c853",
       }}
     >
       <a
@@ -61,10 +59,9 @@ export const WhatsAppContact = () => {
         target="_blank"
         rel="noopener noreferrer"
         style={{
-          display: 'flex',
-          alignItems: 'center',
-          textDecoration: 'none',
-
+          display: "flex",
+          alignItems: "center",
+          textDecoration: "none",
         }}
       >
         <img
@@ -77,9 +74,9 @@ export const WhatsAppContact = () => {
             sx={{
               ml: 1,
               flex: 1,
-              color: '#fff',
+              color: "#fff",
               animation: `${slideIn} 0.3s ease-in-out`,
-              textDecoration: 'none'
+              textDecoration: "none",
             }}
           >
             Quiero contactarme
@@ -87,7 +84,7 @@ export const WhatsAppContact = () => {
         )}
       </a>
     </Box>
-  )
-}
+  );
+};
 
-export default WhatsAppContact
+export default WhatsAppContact;
