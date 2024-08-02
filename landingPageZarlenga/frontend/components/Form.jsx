@@ -1,36 +1,23 @@
 import React from "react";
 import { useFormik } from "formik";
-import { Formik, Form, Field } from "formik";
+import { Form} from "formik";
 import * as Yup from "yup";
 import Swal from "sweetalert2";
 import {
   Grid,
   Button,
   Container,
-  Typography,
   TextField,
-  Box,
-  IconButton,
 } from "@mui/material";
-import { ButtonVideo } from "./ButtonVideo";
 import HeaderForm from "./HeaderForm";
 import { postFetch } from "../hooks/useFetch";
+import PropTypes from 'prop-types';
 const API_URL = process.env.NODE_ENV === 'production'
 ? process.env.NEXT_PUBLIC_API_URL_PRODUCTION
 : process.env.NEXT_PUBLIC_API_URL_DESARROLLO;
 
 const urlUser = `${API_URL}`;
 
-const validationSchema = Yup.object({
-  username: Yup.string()
-    .min(2, "Nombre muy corto")
-    .max(50, "Nombre muy largo")
-    .required("Nombre es requerido"),
-  email: Yup.string().email("Email inválido").required("Email es requerido"),
-  message: Yup.string()
-    .min(10, "Mensaje muy corto")
-    .required("Mensaje es requerido"),
-});
 
 export const FormContainer = ({ onClose }) => {
   const formik = useFormik({
@@ -194,5 +181,9 @@ export const FormContainer = ({ onClose }) => {
     </Container>
   );
 };
-
+Form.propTypes = {
+  onClose: PropTypes.func.isRequired,
+  // Puedes agregar más validaciones de props según sea necesario
+};
 export default Form;
+

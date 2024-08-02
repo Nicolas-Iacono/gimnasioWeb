@@ -16,7 +16,6 @@ import Footer from "../components/Footer";
 import GrillaFotos from "../components/GrillaFotos";
 
 const Home = () => {
-  const [mensajes, setMensajes] = useState([]);
   const [form, setForm] = useState(false);
   const [open, setOpen] = useState(false);
   const [vid, setVid] = useState(null);

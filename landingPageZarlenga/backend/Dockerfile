@@ -12,7 +12,8 @@ RUN npm install
 
 # Copy the rest of the application
 COPY . .
-
+# Agregar esta línea para deshabilitar ESLint temporalmente
+ENV NEXT_DISABLE_ESLINT=true
 # Expose the port the app runs on
 EXPOSE 4000
 

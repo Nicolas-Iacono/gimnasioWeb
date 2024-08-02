@@ -1,4 +1,4 @@
-import React from "react";
+
 import { Typography, styled, Grid } from "@mui/material";
 import foto from "../public/images/inicioCel.png"
 export const Titulo = styled(Typography)(() => ({}));

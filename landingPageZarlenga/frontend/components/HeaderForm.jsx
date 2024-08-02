@@ -1,14 +1,11 @@
 import React from 'react'
 import {
   Grid,
-  Button,
-  Container,
   Typography,
-  TextField,
-  Box,
   IconButton,
 } from "@mui/material";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+import PropTypes from 'prop-types';
 export const HeaderForm = ({onClose}) => {
   return (
     <Grid
@@ -36,5 +33,7 @@ export const HeaderForm = ({onClose}) => {
       </Grid>
   )
 }
-
+HeaderForm.propTypes = {
+  onClose: PropTypes.func.isRequired,
+};
 export default HeaderForm

@@ -8,4 +8,10 @@ export function MyApp({ Component, pageProps }) {
     </Layout>
   );
 }
+
+MyApp.propTypes = {
+  Component: PropTypes.elementType.isRequired,
+  pageProps: PropTypes.object.isRequired,
+};
+
 export default MyApp;
