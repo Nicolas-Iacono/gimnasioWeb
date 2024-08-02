@@ -1,5 +1,5 @@
 import { Grid, Box, Modal } from "@mui/material";
-import React, { useState } from "react";
+import { useState } from "react";
 import azul from "../public/images/remereaAzul.jpg";
 import blanca from "../public/images/remeraBlanca.jpg";
 import abs from "../public/images/abs.jpg";

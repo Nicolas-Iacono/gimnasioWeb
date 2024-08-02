@@ -1,4 +1,3 @@
-import React from "react";
 import { Grid, Typography, IconButton } from "@mui/material";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import PropTypes from "prop-types";

@@ -1,5 +1,5 @@
 import { Box, Typography, keyframes } from "@mui/material";
-import React, { useState, useRef } from "react";
+import { useState, useRef } from "react";
 import logo from "../public/assets/whatsAppLogo.png";
 
 // Define keyframes for the slide-in animation
@@ -25,7 +25,6 @@ export const WhatsAppContact = () => {
 
   const handleMouseEnter = () => {
     setHover(true);
-    const width = elementRef.current.getBoundingClientRect().width;
   };
 
   const handleMouseLeave = () => {

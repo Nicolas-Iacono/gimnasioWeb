@@ -1,5 +1,4 @@
 import { Grid, Box } from "@mui/material";
-import React from "react";
 import insta from "../public/assets/instagram (4).png";
 export const Footer = () => {
   return (
