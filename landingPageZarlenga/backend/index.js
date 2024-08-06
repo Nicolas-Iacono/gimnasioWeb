@@ -7,9 +7,6 @@ const app = express();
 const path = require('path');
 
 app.set("port", process.env.PORT || 4000);
-app.listen(app.get("port"));
-console.log("Escuchando en puerto " + app.get("port"));
-
 
 // Middleware
 app.use(morgan("dev"));
@@ -28,5 +25,10 @@ app.get('*', (req, res) => {
 
 app.listen(app.get("port"), async () => {
   console.log("Escuchando en puerto " + app.get("port"));
-  await dbInit(); // Sincronizar modelos
+  try {
+    await dbInit(); // Sincronizar modelos
+    console.log("Modelos sincronizados correctamente.");
+  } catch (error) {
+    console.error("Error al sincronizar los modelos:", error);
+  }
 });
