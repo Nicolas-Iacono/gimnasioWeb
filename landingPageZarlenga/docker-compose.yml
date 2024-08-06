@@ -26,10 +26,12 @@ services:
     depends_on:
       - db
     environment:
-      - DB_HOST=db
-      - DB_USER=root
-      - DB_PASSWORD=root
-      - DB_NAME=mov-consiente
+      - DB_HOST=${DB_HOST}
+      - DB_DATABASE=${DB_DATABASE}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_PORT=${DB_PORT}
+      - DB_DIALECT=mysql
     networks:
       - my-network
 
@@ -40,11 +42,9 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: mov-consiente
-      MYSQL_USER: root
       MYSQL_PASSWORD: root
     volumes:
       - db_data:/var/lib/mysql
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - my-network
 
@@ -53,3 +53,4 @@ volumes:
 
 networks:
   my-network:
+    driver: bridge

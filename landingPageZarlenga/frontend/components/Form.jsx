@@ -1,4 +1,3 @@
-import React from "react";
 import { useFormik } from "formik";
 import { Form } from "formik";
 import * as Yup from "yup";
@@ -108,7 +107,7 @@ export const FormContainer = ({ onClose }) => {
               fullWidth
               id="age"
               name="age"
-              label="altura"
+              label="edad"
               type="number"
               value={formik.values.age}
               onChange={formik.handleChange}
