@@ -4,6 +4,7 @@ const cors = require("./middlewares/Cors");
 const userRoutes = require('./routes/userRoutes');
 const dbInit = require('./database/dbInit'); 
 const app = express();
+const path = require('path');
 app.set("port", process.env.PORT || 4000);
 
 // Middleware
