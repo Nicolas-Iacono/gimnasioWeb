@@ -1,10 +1,13 @@
+require('dotenv').config(); // Importa dotenv para cargar variables de entorno
+
 const express = require("express");
 const morgan = require("morgan");
 const cors = require("./middlewares/Cors");
 const userRoutes = require('./routes/userRoutes');
 const dbInit = require('./database/dbInit'); 
-const app = express();
 const path = require('path');
+
+const app = express();
 
 app.set("port", process.env.PORT || 4000);
 
