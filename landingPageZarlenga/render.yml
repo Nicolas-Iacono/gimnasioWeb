@@ -12,7 +12,7 @@ services:
       - key: PORT
         value: 4000
       - key: DATABASE
-        value: app_mc
+        value: mov-consiente
       - key: USER
         value: root
       - key: PASSWORD
