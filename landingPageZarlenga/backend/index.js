@@ -20,7 +20,7 @@ app.use(express.json());
 const frontendPath = path.join(__dirname, '..', 'frontend', 'dist');
 app.use(express.static(frontendPath));
 
-app.use('/api/user', userRoutes);
+app.use('/api', userRoutes);
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(frontendPath, 'index.html'));

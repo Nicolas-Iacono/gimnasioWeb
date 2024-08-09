@@ -1,4 +1,3 @@
-
 import axios from 'axios';
 
 // Function to fetch data outside React components

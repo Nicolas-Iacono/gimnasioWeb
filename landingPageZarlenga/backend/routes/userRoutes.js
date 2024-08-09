@@ -2,7 +2,7 @@ const express = require('express');
 const { createUser } = require('../services/UserService');
 const router = express.Router();
 
-router.post('/api/user', async (req, res) => {
+router.post('/user', async (req, res) => {
   try {
     const { username, lastname, age, weight, height, email } = req.body;
     const newUser = await createUser({ username, lastname, age, weight, height, email });
