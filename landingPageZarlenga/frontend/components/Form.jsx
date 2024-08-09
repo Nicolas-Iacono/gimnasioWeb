@@ -1,3 +1,4 @@
+import React from "react";
 import { useFormik } from "formik";
 import { Form } from "formik";
 import * as Yup from "yup";
@@ -8,7 +9,7 @@ import { postFetch } from "../hooks/useFetch";
 import PropTypes from "prop-types";
 const API_URL =
   process.env.NODE_ENV === "production"
-    ? process.env.NEXT_PUBLIC_API_URL_PRODUCTION ||
+    ? process.env.NEXT_PUBLIC_API_URL_PRODUCCION ||
       "https://movimiento-consiente.onrender.com"
     : process.env.NEXT_PUBLIC_API_URL_DESARROLLO || "http://localhost:4000";
 
@@ -107,7 +108,7 @@ export const FormContainer = ({ onClose }) => {
               fullWidth
               id="age"
               name="age"
-              label="edad"
+              label="altura"
               type="number"
               value={formik.values.age}
               onChange={formik.handleChange}
